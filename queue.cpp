@@ -10,7 +10,7 @@ bool isEmpty(const Queue* q) {
 }
 
 bool isFull(const Queue* q) {
-    return (q->rear - q->data + 1) == MAX;
+    return (q->rear == q->data + MAX - 1);
 }
 
 void enqueue(Queue* q, int value) {
@@ -27,7 +27,7 @@ void dequeue(Queue* q) {
     }
 
     q->front++;
-    
+
     if (q->front > q->rear) {
         q->front = q->data;
         q->rear = q->data - 1;
