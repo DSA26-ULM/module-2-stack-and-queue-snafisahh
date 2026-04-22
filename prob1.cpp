@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <cctype>   
 #include "stack.h"
 using namespace std;
 
@@ -18,8 +19,10 @@ int main() {
             push(&s, stoi(x));
         } 
         else {
-            int b = peek(&s); pop(&s);
-            int a = peek(&s); pop(&s);
+            int b = peek(&s);
+            pop(&s);
+            int a = peek(&s);
+            pop(&s);
 
             int hasil = 0; 
             if (x == "+") hasil = a + b;
@@ -31,6 +34,6 @@ int main() {
         }
     }
 
-    cout << peek(&s);
+    cout << peek(&s) << endl;  
     return 0;
 }
