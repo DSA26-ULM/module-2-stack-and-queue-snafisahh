@@ -16,6 +16,8 @@ int main() {
 
     int jumlah = 0;
 
+    if (k > n) k = n;
+
     for (int i = 0; i < k; i++) {
         enqueue(&q, arr[i]);
         jumlah += arr[i];
@@ -24,7 +26,7 @@ int main() {
     cout << jumlah;
 
     for (int i = k; i < n; i++) {
-        int depan = front(&q); 
+        int depan = front(&q);
         jumlah -= depan;
         dequeue(&q);
 
@@ -33,6 +35,8 @@ int main() {
 
         cout << " " << jumlah;
     }
+
+    cout << endl; 
 
     return 0;
 }
