@@ -25,7 +25,13 @@ void dequeue(Queue* q) {
     if (isEmpty(q)) {
         throw "queue kosong";
     }
+
     q->front++;
+    
+    if (q->front > q->rear) {
+        q->front = q->data;
+        q->rear = q->data - 1;
+    }
 }
 
 int front(const Queue* q) {
