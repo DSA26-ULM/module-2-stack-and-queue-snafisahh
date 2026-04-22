@@ -2,23 +2,23 @@
 
 void init(Queue* q) {
     q->front = q->data;
-    q->rear = q->data - 1;
+    q->rear = q->data;
 }
 
 bool isEmpty(const Queue* q) {
-    return q->rear < q->front;
+    return q->front == q->rear;
 }
 
 bool isFull(const Queue* q) {
-    return (q->rear == q->data + MAX - 1);
+    return (q->rear - q->data) == MAX;
 }
 
 void enqueue(Queue* q, int value) {
     if (isFull(q)) {
         throw "queue penuh";
     }
-    q->rear++;
     *(q->rear) = value;
+    q->rear++;
 }
 
 void dequeue(Queue* q) {
@@ -26,12 +26,11 @@ void dequeue(Queue* q) {
         throw "queue kosong";
     }
 
-    q->front++;
-
-    if (q->front > q->rear) {
-        q->front = q->data;
-        q->rear = q->data - 1;
+    for (int* p = q->front; p < q->rear - 1; ++p) {
+        *p = *(p + 1);
     }
+
+    q->rear--;
 }
 
 int front(const Queue* q) {
@@ -45,5 +44,5 @@ int back(const Queue* q) {
     if (isEmpty(q)) {
         throw "queue kosong";
     }
-    return *(q->rear);
+    return *(q->rear - 1);
 }
