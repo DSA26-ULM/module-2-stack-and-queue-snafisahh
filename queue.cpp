@@ -6,11 +6,11 @@ void init(Queue* q) {
 }
 
 bool isEmpty(const Queue* q) {
-    return (q->rear < q->front);
+    return q->rear < q->front;
 }
 
 bool isFull(const Queue* q) {
-    return (q->rear == q->data + MAX - 1);
+    return (q->rear - q->data + 1) == MAX;
 }
 
 void enqueue(Queue* q, int value) {
